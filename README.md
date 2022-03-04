@@ -36,10 +36,10 @@ _hasLoader - if yes it'll show loading animation during loading<br>
 <b>Rider package</b> - for Rider Editor <br>
 
 <br>
-<b>For Memory and rendering optimization</b>
-1. Atlases to reduce drawcall batches as well compressing in one atlas uses less memory
-2. for static content used static canvas (to not recalculate canvas for unnecessary static objects)
-3. compressed bg to nearest for Po2, also disabled mipmap because there is no need of that, without mipmaps textures use less memory
+<b>For Memory and rendering optimization</b><br>
+1. Atlases to reduce drawcall batches as well compressing in one atlas uses less memory<br>
+2. for static content used static canvas (to not recalculate canvas for unnecessary static objects)<br>
+3. compressed bg to nearest for Po2, also disabled mipmap because there is no need of that, without mipmaps textures use less memory<br>
 
 
 <br><br>
