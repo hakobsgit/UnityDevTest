@@ -23,10 +23,10 @@ _popupOrder - order of popup (open on top or wait till all closed)<br>
 _addressableAssetReference - reference of addressable<br>
 _hasLoader - if yes it'll show loading animation during loading<br>
 
-<b>What 3rd party assets are used? </b><br>
-<b>Zenject (Extenject)</b> - for dependency injection</br>
-<b>UniRX</b> - for reactive programming</br>
-<b>DoTween</b> - for tweening animations</br>
+<br><b>What 3rd party assets are used? </b><br>
+<b>Zenject (Extenject)</b> - for dependency injection<br>
+<b>UniRX</b> - for reactive programming<br>
+<b>DoTween</b> - for tweening animations<br>
 
 <b> What packages are used? </b><br>
 <b>Addressables</b> - asset bundles, dynamic content <br>
