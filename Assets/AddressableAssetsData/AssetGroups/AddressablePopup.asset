@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AddressablePopup
+  m_EditorClassIdentifier: 
+  m_GroupName: AddressablePopup
+  m_Data:
+    m_SerializedData: []
+  m_GUID: df1c3312c90134974867d329af8a06f7
+  m_SerializeEntries:
+  - m_GUID: 2d844a4a16336481cad3dbd6dd0afbd7
+    m_Address: Assets/Atlases/Popups/AddressablePopup.spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c6529cb7937d443dbb6a8dbd00c26606
+    m_Address: Assets/Prefabs/Popups/AddressablePopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f17cc069356ab48c1b136d44a6de87bb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7bd2cd02b87f341e8884e522bfb0de09, type: 2}
+    - {fileID: 11400000, guid: b7f906241abba45ceb095e3f1276e92a, type: 2}
