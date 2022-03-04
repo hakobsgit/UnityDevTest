@@ -10,7 +10,7 @@ namespace Views.Elements {
 		public void SetActive(bool active) {
 			_image.enabled = active;
 			if (active) {
-				transform.DORotate(Vector3.forward * 360, 0.3f).SetRelative().SetEase(Ease.Linear).SetLoops(-1);
+				transform.DORotate(Vector3.back * 360, 0.5f).SetRelative().SetEase(Ease.Linear).SetLoops(-1);
 			}
 			else {
 				transform.DOKill();

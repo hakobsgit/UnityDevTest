@@ -23,20 +23,28 @@ namespace Popups.Core {
 		private static readonly int HideTrigger = Animator.StringToHash("hide");
 
 		public ReactiveCommand OnHide { get; } = new ReactiveCommand();
+		public ReactiveCommand OnShow { get; } = new ReactiveCommand();
 		public ReactiveCommand AfterHide { get; } = new ReactiveCommand();
+		public ReactiveCommand AfterShow { get; } = new ReactiveCommand();
 		public bool HasDimmer => _hasDimmer;
 
 		public virtual void Show(Action onComplete = null) {
+			OnShow.Execute();
 			gameObject.SetActive(true);
 			_animator.enabled = true;
-			onComplete += () => _animator.enabled = false; 
+			onComplete += () => {
+				_animator.enabled = false;
+				AfterShow.Execute();
+			}; 
 			_animator.SetTrigger(ShowTrigger);
 			Observable.Timer(TimeSpan.FromSeconds(_showAnimation.length)).Subscribe(_ => { onComplete?.Invoke(); });
 		}
 
 		public virtual void Hide(Action onComplete = null) {
 			OnHide.Execute();
+			_animator.enabled = true;
 			onComplete += () => {
+				_animator.enabled = false;
 				AfterHide.Execute();
 				if (_destroyAfterHide) {
 					Destroy(gameObject, Time.deltaTime);
@@ -45,8 +53,6 @@ namespace Popups.Core {
 					gameObject.SetActive(false);
 				}
 			};
-			_animator.enabled = true;
-			onComplete += () => _animator.enabled = false;
 			_animator.SetTrigger(HideTrigger);
 			Observable.Timer(TimeSpan.FromSeconds(_hideAnimation.length)).Subscribe(_ => { onComplete?.Invoke(); });
 		}
@@ -63,7 +69,7 @@ namespace Popups.Core {
 			_closeButton.gameObject.SetActive(active);
 		}
 
-		private void Start() {
+		protected virtual void Start() {
 			if (_closeButton) {
 				_closeButton.onClick.AddListener(() => Hide());
 			}

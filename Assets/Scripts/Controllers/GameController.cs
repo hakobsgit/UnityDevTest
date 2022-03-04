@@ -85,6 +85,9 @@ namespace Controllers {
 					popup.SetCloseButtonActive(true);
 					OpenPopupOnTop();
 				}, false);
+				popup.AfterHide.Subscribe(_ => {
+					AddressablePopupClosed();
+				});
 			});
 		}
 
@@ -99,9 +102,6 @@ namespace Controllers {
 						popup.Hide();
 					});
 			});
-			_popupManager.GetPopup<AddressablePopup>().AfterHide.Subscribe(_ => {
-				AddressablePopupClosed();
-			});
 		}
 
 		private void AddressablePopupClosed() {
@@ -110,7 +110,7 @@ namespace Controllers {
 					() => {
 						popup.Hide();
 						ShowAnimationsPopup();
-					});
+					}, false);
 			});
 		}
 
@@ -154,11 +154,11 @@ namespace Controllers {
 				popup.Init("Ok! let me show you another thing :) The dynamic content popup without loading again", "Awesome!",
 					() => {
 						popup.Hide();
-						_dynamicContentPopup.Show();
+						_popupManager.ShowReadyPopup(_dynamicContentPopup);
 						_dynamicContentPopup.AfterHide.Subscribe(_ => {
 							Done();
 						});
-					});
+					}, false);
 			});
 		}
 

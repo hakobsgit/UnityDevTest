@@ -11,7 +11,6 @@ namespace Data.Models {
 		[SerializeField] private PopupOrder _popupOrder;
 		[SerializeField] private AssetReference _addressableAssetReference;
 		[SerializeField] private bool _hasLoader;
-		[SerializeField] private bool _hasDimmer;
 
 		public string Name => _name;
 
@@ -22,7 +21,5 @@ namespace Data.Models {
 		public AssetReference AddressableAssetReference => _addressableAssetReference;
 
 		public bool HasLoader => _hasLoader;
-
-		public bool HasDimmer => _hasDimmer;
 	}
 }

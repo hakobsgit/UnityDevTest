@@ -22,7 +22,6 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     _hasLoader: 0
-    _hasDimmer: 1
   - _name: AddressablePopup
     _loadType: 1
     _popupOrder: 0
@@ -32,7 +31,6 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     _hasLoader: 1
-    _hasDimmer: 1
   - _name: DialogPopup
     _loadType: 0
     _popupOrder: 1
@@ -42,7 +40,6 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     _hasLoader: 0
-    _hasDimmer: 1
   - _name: DynamicContentPopup
     _loadType: 0
     _popupOrder: 0
@@ -52,7 +49,6 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     _hasLoader: 1
-    _hasDimmer: 1
   - _name: AnimationsPopup
     _loadType: 0
     _popupOrder: 1
@@ -62,4 +58,12 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     _hasLoader: 0
-    _hasDimmer: 1
+  - _name: PlayAnimationPopup
+    _loadType: 0
+    _popupOrder: 1
+    _addressableAssetReference:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    _hasLoader: 0

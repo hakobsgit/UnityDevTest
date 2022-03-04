@@ -30,11 +30,34 @@ namespace Managers {
 			_view = _prefabFactory.Create<PopupView>("Views/PopupView");
 		}
 
+		public void ShowPopup(string name) {
+			PopupData popupData = _popupsConfig.GetPopupData(name);
+			ShowPopupByData<BasePopup>(popupData);
+		}
+
 		public void ShowPopup<T>(Action<T> onReady = null, PopupOrder? order = null) where T : BasePopup {
 			PopupData popupData = _popupsConfig.GetPopupData<T>();
+			ShowPopupByData(popupData, onReady, order);
+		}
+
+		public void ShowPopupByData<T>(PopupData popupData, Action<T> onReady = null, PopupOrder? order = null) where T : BasePopup {
 			var popupOrder = order ?? popupData.PopupOrder;
-			onReady += popup => { ShowPopup(popup, popupOrder); };
+			
+			if (popupData.HasLoader) {
+				_view.Loader.SetActive(true);
+			}
+
+			onReady += popup => {
+				popup.AfterShow.Subscribe(_ => {
+					_view.Loader.SetActive(false);
+				});
+				ShowReadyPopup(popup, popupOrder);
+			};
 			CreatePopup(popupData, onReady);
+		}
+
+		public void ShowReadyPopup(BasePopup popup, PopupOrder popupOrder = PopupOrder.OnTopOfOpenPopup) {
+			ShowPopup(popup, popupOrder);
 		}
 
 		public BasePopup GetPopup<T>() {
@@ -68,15 +91,14 @@ namespace Managers {
 			}
 
 			popup.OnHide.Subscribe(_ => OnPopupHid(popup));
+			popup.transform.SetParent(_view.Container, false);
 
 			if (_pendingPopups.Count > 1 && order == PopupOrder.BehindOfOpenPopup) {
-				popup.transform.SetParent(_view.Container, false);
 				popup.gameObject.SetActive(false);
 				return;
 			}
 
 			_view.Dimmer.enabled = popup.HasDimmer;
-			popup.transform.SetParent(_view.Container, false);
 			popup.Show();
 		}
 
@@ -90,7 +112,6 @@ namespace Managers {
 
 			if (nextPopup) {
 				if (!nextPopup.gameObject.activeInHierarchy) {
-					nextPopup.gameObject.SetActive(true);
 					_view.Dimmer.enabled = nextPopup.HasDimmer;
 					nextPopup.Show();
 				}
