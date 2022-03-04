@@ -15,6 +15,7 @@ Open Scene.unity from Scenes folder and play the scene. There are two buttons
 
 <br>
 Popups have Config located at Configs/Popups which contains list of popups data
+<br>
 <br><b>PopupData</b><br>
 _name - name of popup (commonly the name of class)<br>
 _loadType - load type (Resources or Addressables)<br>
@@ -40,11 +41,14 @@ _hasLoader - if yes it'll show loading animation during loading<br>
 2. for static content used static canvas (to not recalculate canvas for unnecessary static objects)
 3. compressed bg to nearest for Po2, also disabled mipmap because there is no need of that, without mipmaps textures use less memory
 
+
 <br>
 I thought to use Addressables system to have content separated from the game. Right now the system works on local paths but it is really easy to make it remote. When content delivery server is ready, it's just about changing some paths. With adressables would be really easy to update any content of popups.
 
+
 <br>
 If I had more time I would consider to add new Object Pool system to PopupsManager and for loading addressables. I would add Caching system for downloaded assets(images).
+
 
 <br>
 I hope you'll like the project's hierarchy and code's cleanity 
